@@ -1,7 +1,7 @@
 .promo {
     min-height: 650px;
     padding: 21px 0 93px 0;
-    background: url("../../img/1-section/bg.png");
+    background: url("../../img/1-section/bg.png") center (center / cover) no-repeat;
     &__wrapper {
         margin-top: 90px;
         display: flex;
@@ -60,6 +60,34 @@
             color: #ffffff;
             text-decoration: underline;
             text-transform: uppercase;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .promo {
+        background-position: 40%;
+        &__header {
+            text-align: center;
+        }
+        &__subheadder {
+            text-align: center;
+        }
+        &__wrapper {
+            align-items: center;
+        }
+    }
+}
+@media (max-width: 375px) {
+    .promo {
+        &__icon {
+            width: 104px;
+        }
+        &__header {
+            font-size: 36px;
+        }
+        &__subheadder {
+            font-size: 20px;
         }
     }
 }

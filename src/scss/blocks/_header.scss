@@ -41,3 +41,32 @@
         align-items: flex-end;
     }
 }
+
+@media (max-width: 767px) {
+    .header {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        &__logo {
+            width: 50%;
+        }
+        &__official {
+            // margin: 0 33px 0 33px;
+            margin-top: 30px;
+            order: 3;
+        }
+        &__contacts {
+            width: 50%;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .header {
+        &__contacts {
+            height: 40px;
+        }
+        &__phone {
+            font-size: 14px;
+        }
+    }
+}

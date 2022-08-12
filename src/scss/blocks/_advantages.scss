@@ -33,3 +33,15 @@
         color: #0d0d0d;
     }
 }
+@media (max-width: 767px) {
+    .advantages {
+        &__wrapper {
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__item {
+            height: 224px;
+        }
+    }
+}
