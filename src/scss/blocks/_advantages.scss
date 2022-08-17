@@ -31,6 +31,11 @@
         line-height: 18px;
         text-align: center;
         color: #0d0d0d;
+        span {
+            color: red;
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
 }
 @media (max-width: 767px) {
