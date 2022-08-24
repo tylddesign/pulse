@@ -19,6 +19,12 @@
         &:nth-child(3) {
             margin-bottom: 20px;
         }
+        &:first-child {
+            margin-top: 0px;
+        }
+    }
+    &_mt25 {
+        margin-top: 25px;
     }
 }
 

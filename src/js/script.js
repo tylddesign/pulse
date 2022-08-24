@@ -51,4 +51,24 @@ $(document).ready(function () {
 
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
+
+    //Modal consultation
+    $('[data-modal=consultation]').on('click', function () {
+        $('.overlay, #consultation').fadeIn('slow');
+
+    });
+
+    // Закрытие всех модальных окн
+    $('.modal__close').on('click', function () {
+        $('.overlay, #consultation, #order, #thanks').fadeOut('slow');
+    });
+
+    //Modal order
+    $('.catalog-item__btn').each(function (i) {
+        $(this).on('click', function () { // По клику на кнопку (catalog-item__btn) у нас будет функция:
+            $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text()); // функция берет по селектору элемент описания модального окна и вставляет в него текст. Этот текст получаем при помощи .text(), внутри которого мы находим элемент по которому кликнули и оотуда вытаскиваем нужное описание.
+            $('.overlay, #order').fadeIn('slow');
+        });
+    });
+
 });
