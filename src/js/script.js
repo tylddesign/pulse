@@ -8,37 +8,45 @@
 // });
 
 
-const slider = tns({
-    container: '.carousel__inner',
-    items: 1,
-    slideBy: 'page',
-    autoplay: false,
-    controls: false,
-    nav: false
-    // prevButton: '<button type="button" class="slick-prev"><img src="icons/left.png"></button>'
-});
+
 
 // document.querySelector('.slick-prev').onclick = function () {
 //     slider.goTo('prev');
 // };
 
 
-document.querySelector('.slick-prev').addEventListener('click', function () {
-    slider.goTo('prev');
-});
-
-document.querySelector('.slick-next').addEventListener('click', function () {
-    slider.goTo('next');
-});
 
 $(document).ready(function () {
 
+    // Кнопка предыдущий в карусели
+    document.querySelector('.slick-prev').addEventListener('click', function () {
+        slider.goTo('prev');
+    });
+
+    // Кнопка следующий в карусели
+    document.querySelector('.slick-next').addEventListener('click', function () {
+        slider.goTo('next');
+    });
+
+    // Настройка карусели
+    const slider = tns({
+        container: '.carousel__inner',
+        items: 1,
+        slideBy: 'page',
+        autoplay: false,
+        controls: false,
+        nav: false
+        // prevButton: '<button type="button" class="slick-prev"><img src="icons/left.png"></button>'
+    });
+
+    // Табы
     $('ul.catalog__tabs').on('click', 'li:not(.catalog__tab_active)', function () {
         $(this)
             .addClass('catalog__tab_active').siblings().removeClass('catalog__tab_active')
             .closest('div.container').find('div.catalog__content').removeClass('catalog__content_active').eq($(this).index()).addClass('catalog__content_active'); // closest - ближайший элемент (контейнер), внутри него find - найти активный контент, removeClass - удалить класс активности, eq - получает тот номер элемента на который мы кликнули, addClass - добавляет класс.
     });
 
+    // Контент в табах
     function toggleSlide(item) { // функция "переключатель"
         $(item).each(function (i) { //каждый элемент (item) который попал в функцию будет делать что-то
             $(this).on('click', function (e) { //this - текущий выбранный элемент по клику будет делать следующую функцию
@@ -70,5 +78,39 @@ $(document).ready(function () {
             $('.overlay, #order').fadeIn('slow');
         });
     });
+
+    // Настройка валидации
+    function validateForms(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                minlength: 2,
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, укажите имя",
+                    minlength: jQuery.validator.format("Введите, пожалуйста, больше {0} символов")
+                },
+                phone: "Пожалуйста, укажите телефон",
+                email: {
+                    required: "Пожалуйста, укажите почту",
+                    email: "Укажите верную почту"
+                }
+            }
+        });
+    }
+    validateForms('#consultation-form');
+    validateForms('#order form');
+    validateForms('#consultation form');
+
+    $('input[name=phone]').mask("+7 (999) 999-99-99")
 
 });

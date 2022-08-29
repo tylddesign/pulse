@@ -16,10 +16,10 @@ gulp.task('server', function () {
 
 gulp.task('styles', function () {
     return gulp.src("src/scss/**/*.+(scss|sass)")
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(sass({ outputStyle: "expanded" }).on('error', sass.logError))
         .pipe(rename({
             prefix: "",
-            suffix: ".min",
+            // suffix: ".min",
         }))
         .pipe(autoprefixer({
             cascade: false
