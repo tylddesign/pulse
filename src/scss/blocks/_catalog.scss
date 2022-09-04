@@ -128,6 +128,7 @@
             }
         }
         &__wrapper {
+            position: relative;
             display: flex;
             width: calc(200% + 40px);
         }
@@ -173,7 +174,7 @@
         &__back {
             display: block;
             position: absolute;
-            bottom: 0px;
+            bottom: -123px;
             left: 50%;
             transform: translateX(calc(-50% - 12px));
             font-weight: 500;
@@ -183,6 +184,7 @@
             text-decoration-line: underline;
             text-transform: uppercase;
             color: $main-color;
+            list-style-type: none;
             &:hover {
                 color: $main-color;
             }
